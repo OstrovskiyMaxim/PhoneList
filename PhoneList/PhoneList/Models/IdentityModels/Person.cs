@@ -23,6 +23,8 @@ namespace PhoneList.Models.IdentityModels
 
         public List<Phone> Phones { get; set; }
 
+        public List<Adress> Adress { get; set; }
+
         [ForeignKey("user")]
         public int UserId { get; set; }
 
