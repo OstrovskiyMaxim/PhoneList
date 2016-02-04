@@ -19,8 +19,12 @@ namespace PhoneList.Models.IdentityModels
 
         [Display(Name = "Улица")]
         public string Street { get; set; }
-    
+   
         [Display(Name = "Дом/Квартира")]
         public string HouseNo { get; set; }
+
+        public Person person { get; set; }
+
+        public List<Person> Persons { get; set; }
     }
 }

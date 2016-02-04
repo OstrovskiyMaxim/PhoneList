@@ -2,40 +2,46 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace PhoneList.Models.ViewModels
+namespace PhoneList.Models.DataModel
 {
-    public class PhoneViewModel
+    public class DataPhone
     {
+        [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Номер телефона")]
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Тип")]
         public string PhoneType { get; set; }
 
+        [ForeignKey("person")]
         public int PersonId { get; set; }
 
-        public PhoneViewModel()
+        public DataPerson person { get; set; }
+
+        public DataPhone()
         {
 
         }
 
-        public PhoneViewModel(string type, string number, int personId)
+        public DataPhone(string type, string number, int personId)
         {
             this.PhoneType = type;
             this.PhoneNumber = number;
-            this.PersonId = personId;
+            this.PersonId = PersonId;
         }
 
-        public PhoneViewModel(Phone phone)
+        public DataPhone(Phone phone)
         {
+            this.Id = phone.Id;
             this.PhoneType = phone.PhoneType;
             this.PhoneNumber = phone.PhoneNumber;
             this.PersonId = phone.PersonId;
+            this.person = new DataPerson(phone.person);
         }
     }
 }

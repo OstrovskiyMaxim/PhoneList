@@ -1,4 +1,6 @@
-﻿using PhoneList.Models.IdentityModels;
+﻿using PhoneList.Models.DataModel;
+using PhoneList.Models.EntityContexts;
+using PhoneList.Models.IdentityModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,11 +8,11 @@ using System.Web;
 
 namespace PhoneList.Repository
 {
-    public class EntityRepository : IRepository<User>
+    public class EntityRepository : IRepository<DataUser>
     {
-        EntityUserContext db = new EntityUserContext();
+        EntityContext db = new EntityContext();
 
-        public void Create(User item)
+        public void Create(DataUser item)
         {
             db.Users.Add(item);
         }
@@ -21,12 +23,12 @@ namespace PhoneList.Repository
             // db.Phones.RemoveRange(db.Phones.Where(p => p.UserId == id));
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<DataUser> GetAll()
         {
             return db.Users.ToList();
         }
 
-        public User GetById(int id)
+        public DataUser GetById(int id)
         {
             return db.Users.Find(id);
         }
@@ -36,17 +38,17 @@ namespace PhoneList.Repository
             db.SaveChanges();
         }
 
-        public void Update(User item)
+        public void Update(DataUser item)
         {
-            db.Entry<User>(item).State = System.Data.Entity.EntityState.Modified;
+            db.Entry<DataUser>(item).State = System.Data.Entity.EntityState.Modified;
 
-            foreach (Phone itemP in item.Phones)
+            foreach (DataPerson itemP in item.Persons)
             {
                 UpdatePhone(itemP);
             }
 
             int Id = item.Id;
-            User user = GetById(Id);
+            DataUser user = GetById(Id);
 
             user.FirstName = item.FirstName;
             user.LastName = item.LastName;
@@ -55,12 +57,12 @@ namespace PhoneList.Repository
             db.SaveChanges();
         }
 
-        private void UpdatePhone(Phone phone)
+        private void UpdatePhone(DataPhone phone)
         {
-            db.Entry<Phone>(phone).State = System.Data.Entity.EntityState.Modified;
+            db.Entry<DataPhone>(phone).State = System.Data.Entity.EntityState.Modified;
             try
             {
-                Phone ph = db.Phones.Find(phone.Id);
+                DataPhone ph = db.Phones.Find(phone.Id);
                 ph.PhoneNumber = phone.PhoneNumber;
                 ph.PhoneType = phone.PhoneType;
             }
