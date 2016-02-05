@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PhoneList.Models.DataModel
 {
-    public class DataUser : 
+    public class DataUser 
     {
         [Key]
         public int Id { get; set; }

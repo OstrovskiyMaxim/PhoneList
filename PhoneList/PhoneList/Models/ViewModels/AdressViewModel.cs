@@ -14,8 +14,12 @@ namespace PhoneList.Models.ViewModels
         [Display(Name = "Страна")]
         public string Country { get; set; }
 
+        private int CountryId { get; set; }
+
         [Display(Name = "Город")]
         public string City { get; set; }
+
+        private int CityId { get; set; }
 
         [Display(Name = "Улица")]
         public string Street { get; set; }

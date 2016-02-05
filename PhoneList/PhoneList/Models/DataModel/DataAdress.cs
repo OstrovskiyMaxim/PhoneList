@@ -16,12 +16,6 @@ namespace PhoneList.Models.DataModel
 
         public int CityId { get; set; }
 
-        [Display(Name = "Улица")]
-        public string Street { get; set; }
-
-        [Display(Name = "Дом/Квартира")]
-        public string HouseNo { get; set; }
-
         public DataPerson person { get; set; }
 
         public List<DataPerson> Persons { get; set; }

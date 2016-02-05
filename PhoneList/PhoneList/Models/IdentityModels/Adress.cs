@@ -11,11 +11,9 @@ namespace PhoneList.Models.IdentityModels
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Страна")]
-        public string Country { get; set; }
+        public int CountryId { get; set; }
 
-        [Display(Name = "Город")]
-        public string City { get; set; }
+        public int CityId { get; set; }
 
         [Display(Name = "Улица")]
         public string Street { get; set; }

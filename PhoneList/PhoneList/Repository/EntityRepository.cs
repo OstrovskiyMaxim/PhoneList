@@ -1,6 +1,5 @@
 ﻿using PhoneList.Models.DataModel;
 using PhoneList.Models.EntityContexts;
-using PhoneList.Models.IdentityModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +19,6 @@ namespace PhoneList.Repository
         public void Delete(int id)
         {
             db.Users.Remove(GetById(id));
-            // db.Phones.RemoveRange(db.Phones.Where(p => p.UserId == id));
         }
 
         public IEnumerable<DataUser> GetAll()
@@ -38,38 +36,47 @@ namespace PhoneList.Repository
             db.SaveChanges();
         }
 
-        public void Update(DataUser item)
+        public void Update(DataUser user)
         {
-            db.Entry<DataUser>(item).State = System.Data.Entity.EntityState.Modified;
-
-            foreach (DataPerson itemP in item.Persons)
-            {
-                UpdatePhone(itemP);
-            }
-
-            int Id = item.Id;
-            DataUser user = GetById(Id);
-
-            user.FirstName = item.FirstName;
-            user.LastName = item.LastName;
-            user.Age = item.Age;
-
-            db.SaveChanges();
+            throw new NotImplementedException();
         }
 
-        private void UpdatePhone(DataPhone phone)
+
+        //Person CRUD actions
+        public void CreatePerson(DataPerson item)
         {
-            db.Entry<DataPhone>(phone).State = System.Data.Entity.EntityState.Modified;
-            try
-            {
-                DataPhone ph = db.Phones.Find(phone.Id);
-                ph.PhoneNumber = phone.PhoneNumber;
-                ph.PhoneType = phone.PhoneType;
-            }
-            catch
-            {
-                db.Phones.Add(phone);
-            }
+            db.Persons.Add(item);
+        }
+
+        public void DeletePerson(int id)
+        {
+            db.Persons.Remove(GetByIdPerson(id));
+        }
+
+        public IEnumerable<DataPerson> GetAllPersons()
+        {
+            return db.Persons.ToList();
+        }
+
+        public DataPerson GetByIdPerson(int id)
+        {
+            return db.Persons.Find(id);
+        }
+
+        public void UpdatePerson(DataPerson person)
+        {
+            throw new NotImplementedException();
+        }
+
+        //Adress CRUD actions
+        public IEnumerable<DataCountry> GetAllCountries()
+        {
+            return db.Countries.ToList();
+        }
+
+        public IEnumerable<DataCity> GetCityByCountry(int countryId)
+        {
+            return db.Cities.Where<DataCity>(x => x.CountryId == countryId);
         }
     }
 }
