@@ -35,13 +35,13 @@ namespace PhoneList.Models.DataModel
             this.PersonId = PersonId;
         }
 
-        public DataPhone(Phone phone)
-        {
-            this.Id = phone.Id;
-            this.PhoneType = phone.PhoneType;
-            this.PhoneNumber = phone.PhoneNumber;
-            this.PersonId = phone.PersonId;
-            this.person = new DataPerson(phone.person);
-        }
+        //public DataPhone(Phone phone)
+        //{
+        //    this.Id = phone.Id;
+        //    this.PhoneType = phone.PhoneType;
+        //    this.PhoneNumber = phone.PhoneNumber;
+        //    this.PersonId = phone.PersonId;
+        //    this.person = new DataPerson(phone.person);
+        //}
     }
 }

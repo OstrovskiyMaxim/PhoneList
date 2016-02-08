@@ -46,22 +46,22 @@ namespace PhoneList.Models.ViewModels
             this.IdentityId = id;
         }
 
-        public UserViewModel(User user)
-        {
-            this.Id = user.Id;
-            this.IdentityId = user.IdentityId;
-            this.Photo = user.Photo;
-            this.Login = user.Login;
-            this.Email = user.Email;
-            this.FirstName = user.FirstName;
-            this.LastName = user.LastName;
-            this.Age = user.Age;
-            this.About = user.About;
+        //public UserViewModel(User user)
+        //{
+        //    this.Id = user.Id;
+        //    this.IdentityId = user.IdentityId;
+        //    this.Photo = user.Photo;
+        //    this.Login = user.Login;
+        //    this.Email = user.Email;
+        //    this.FirstName = user.FirstName;
+        //    this.LastName = user.LastName;
+        //    this.Age = user.Age;
+        //    this.About = user.About;
 
-            foreach(var item in user.Persons)
-            {
-                this.PersonsVM.Add(new PersonViewModel(item));
-            }
-        }
+        //    foreach(var item in user.Persons)
+        //    {
+        //        this.PersonsVM.Add(new PersonViewModel(item));
+        //    }
+        //}
     }
 }

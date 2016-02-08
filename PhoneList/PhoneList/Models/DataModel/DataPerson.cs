@@ -36,25 +36,25 @@ namespace PhoneList.Models.DataModel
             Phones = new List<DataPhone>();
         }
 
-        public DataPerson(Person person)
-        {
-            this.Id = person.Id;
-            this.FirstName = person.FirstName;
-            this.LastName = person.LastName;
-            this.Age = person.Age;
+        //public DataPerson(Person person)
+        //{
+        //    this.Id = person.Id;
+        //    this.FirstName = person.FirstName;
+        //    this.LastName = person.LastName;
+        //    this.Age = person.Age;
 
-            foreach (var item in person.Phones)
-            {
-                this.Phones.Add(new DataPhone(item));
-            }
+        //    foreach (var item in person.Phones)
+        //    {
+        //        this.Phones.Add(new DataPhone(item));
+        //    }
 
-            foreach (var itemA in person.Adress)
-            {
-                this.Adress.Add(new DataAdress(itemA));
-            }
+        //    foreach (var itemA in person.Adress)
+        //    {
+        //        this.Adress.Add(new DataAdress(itemA));
+        //    }
 
-            this.user = new DataUser(person.user);
+        //    this.user = new DataUser(person.user);
 
-        }
+        //}
     }
 }

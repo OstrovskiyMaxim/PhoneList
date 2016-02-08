@@ -4,11 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using PhoneList.Models.ViewModels;
 
 namespace PhoneList.Models.IdentityModels
 {
     public class Person
     {
+        private PersonViewModel item;
+
         [Key]
         public int Id { get; set; }
 
@@ -34,5 +37,6 @@ namespace PhoneList.Models.IdentityModels
         {
             Phones = new List<Phone>();
         }
+
     }
 }

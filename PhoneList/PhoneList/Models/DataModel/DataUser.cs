@@ -47,22 +47,22 @@ namespace PhoneList.Models.DataModel
             this.IdentityId = id;
         }
 
-        public DataUser(User user)
-        {
-            this.Id = user.Id;
-            this.IdentityId = user.IdentityId;
-            this.Photo = user.Photo;
-            this.Login = user.Login;
-            this.Email = user.Email;
-            this.FirstName = user.FirstName;
-            this.LastName = user.LastName;
-            this.Age = user.Age;
-            this.About = user.About;
+        //public DataUser(User user)
+        //{
+        //    this.Id = user.Id;
+        //    this.IdentityId = user.IdentityId;
+        //    this.Photo = user.Photo;
+        //    this.Login = user.Login;
+        //    this.Email = user.Email;
+        //    this.FirstName = user.FirstName;
+        //    this.LastName = user.LastName;
+        //    this.Age = user.Age;
+        //    this.About = user.About;
 
-            foreach (var item in user.Persons)
-            {
-                this.Persons.Add(new DataPerson(item));
-            }
-        }
+        //    foreach (var item in user.Persons)
+        //    {
+        //        this.Persons.Add(new DataPerson(item));
+        //    }
+        //}
     }
 }

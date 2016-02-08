@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PhoneList.Repository
 {
-    public class EntityRepository : IRepository<DataUser>
+    public class EntityRepository : IRepository<DataUser>,IDisposable
     {
         EntityContext db = new EntityContext();
 
@@ -50,15 +50,15 @@ namespace PhoneList.Repository
 
         public void DeletePerson(int id)
         {
-            db.Persons.Remove(GetByIdPerson(id));
+            db.Persons.Remove(GetPersonById(id));
         }
 
-        public IEnumerable<DataPerson> GetAllPersons()
+        public IEnumerable<DataPerson> GetAllPersons(int id)
         {
-            return db.Persons.ToList();
+            return db.Persons.Where(x=>x.UserId == id).ToList();
         }
 
-        public DataPerson GetByIdPerson(int id)
+        public DataPerson GetPersonById(int id)
         {
             return db.Persons.Find(id);
         }
@@ -74,9 +74,14 @@ namespace PhoneList.Repository
             return db.Countries.ToList();
         }
 
-        public IEnumerable<DataCity> GetCityByCountry(int countryId)
+        public IEnumerable<DataCity> GetCityByCountryId(int countryId)
         {
             return db.Cities.Where<DataCity>(x => x.CountryId == countryId);
+        }
+
+        public void Dispose()
+        {
+            db.Dispose();
         }
     }
 }

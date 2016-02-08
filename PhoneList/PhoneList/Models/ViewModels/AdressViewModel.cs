@@ -14,18 +14,22 @@ namespace PhoneList.Models.ViewModels
         [Display(Name = "Страна")]
         public string Country { get; set; }
 
-        private int CountryId { get; set; }
+        public int CountryId { get; set; }
 
         [Display(Name = "Город")]
         public string City { get; set; }
 
-        private int CityId { get; set; }
+        public int CityId { get; set; }
 
         [Display(Name = "Улица")]
         public string Street { get; set; }
 
         [Display(Name = "Дом/Квартира")]
         public string HouseNo { get; set; }
+
+        public double Lng { get; set; }
+
+        public double Lat { get; set; }
 
         public PersonViewModel person { get; set; }
 
@@ -44,12 +48,11 @@ namespace PhoneList.Models.ViewModels
 
         }
 
-        public AdressViewModel(Adress adress)
-        {
-            this.Country = adress.Country;
-            this.City = adress.City;
-            this.Street = adress.Street;
-            this.HouseNo = adress.HouseNo;
-        }
+        //public AdressViewModel(Adress adress)
+        //{
+        //    this.CityId = adress.CityId;
+        //    this.Street = adress.Street;
+        //    this.HouseNo = adress.HouseNo;
+        //}
     }
 }

@@ -22,25 +22,28 @@ namespace PhoneList.Models.ViewModels
 
         public List<PhoneViewModel> PhonesVM { get; set; }
 
+        public List<AdressViewModel> AdressesVM { get; set; }
+
         public int UserId { get; set; }
 
         public PersonViewModel()
         {
             PhonesVM = new List<PhoneViewModel>();
+            AdressesVM = new List<AdressViewModel>();
         }
 
-        public PersonViewModel(Person person)
-        {
-            this.Id = person.Id;
-            this.FirstName = person.FirstName;
-            this.LastName = person.LastName;
-            this.Age = person.Age;
-            this.UserId = person.UserId;
+        //public PersonViewModel(Person person)
+        //{
+        //    this.Id = person.Id;
+        //    this.FirstName = person.FirstName;
+        //    this.LastName = person.LastName;
+        //    this.Age = person.Age;
+        //    this.UserId = person.UserId;
             
-            foreach(var item in person.Phones)
-            {
-                this.PhonesVM.Add(new PhoneViewModel(item));
-            }
-        }
+        //    foreach(var item in person.Phones)
+        //    {
+        //        this.PhonesVM.Add(new PhoneViewModel(item));
+        //    }
+        //}
     }
 }

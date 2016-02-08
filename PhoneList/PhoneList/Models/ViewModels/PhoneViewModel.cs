@@ -31,11 +31,11 @@ namespace PhoneList.Models.ViewModels
             this.PersonId = personId;
         }
 
-        public PhoneViewModel(Phone phone)
-        {
-            this.PhoneType = phone.PhoneType;
-            this.PhoneNumber = phone.PhoneNumber;
-            this.PersonId = phone.PersonId;
-        }
+        //public PhoneViewModel(Phone phone)
+        //{
+        //    this.PhoneType = phone.PhoneType;
+        //    this.PhoneNumber = phone.PhoneNumber;
+        //    this.PersonId = phone.PersonId;
+        //}
     }
 }

@@ -16,5 +16,6 @@ namespace PhoneList.Models.EntityContexts
         public virtual DbSet<DataCountry> Countries { get; set; }
         public virtual DbSet<DataCity> Cities { get; set; }
 
+        public System.Data.Entity.DbSet<PhoneList.Models.ViewModels.UserViewModel> UserViewModels { get; set; }
     }
 }

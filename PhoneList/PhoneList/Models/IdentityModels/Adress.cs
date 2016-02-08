@@ -21,6 +21,10 @@ namespace PhoneList.Models.IdentityModels
         [Display(Name = "Дом/Квартира")]
         public string HouseNo { get; set; }
 
+        public double Lng { get; set; }
+
+        public double Lat { get; set; }
+
         public Person person { get; set; }
 
         public List<Person> Persons { get; set; }
