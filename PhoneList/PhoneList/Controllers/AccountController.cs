@@ -12,7 +12,7 @@ using System.Web.Security;
 
 namespace PhoneList.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         UserService service = new UserService();
         // GET: Account
@@ -83,8 +83,15 @@ namespace PhoneList.Controllers
             if (ModelState.IsValid)
             {
                 model.Role = "user";
+                var existsLogin = service.GetAllUsers().Where(x => x.Login == model.Login).FirstOrDefault();
+                var existsMail = service.GetAllUsers().Where(x => x.Email == model.Email).FirstOrDefault();
+                if (existsLogin != null || existsMail != null)
+                {
+                    ModelState.AddModelError("", "User with this login or email already exists");
+                    return View(model);
+                }
                 service.Create(model);
-                return RedirectToAction("Login", "Account", model);
+                return RedirectToAction("Login", "Account");
             }
             else
             {

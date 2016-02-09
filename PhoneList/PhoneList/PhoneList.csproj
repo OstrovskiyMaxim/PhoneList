@@ -139,10 +139,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602081533209_InitialCreate.cs" />
+    <Compile Include="Migrations\201602081533209_InitialCreate.Designer.cs">
+      <DependentUpon>201602081533209_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602091213159_Register.cs" />
+    <Compile Include="Migrations\201602091213159_Register.Designer.cs">
+      <DependentUpon>201602091213159_Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomPrincipalSerializeModel.cs" />
     <Compile Include="Models\DataModel\DataAdress.cs" />
     <Compile Include="Models\DataModel\DataCity.cs" />
@@ -204,9 +214,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Main\AddressBook.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Main\Cabinet.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Account\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -215,6 +228,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602081533209_InitialCreate.resx">
+      <DependentUpon>201602081533209_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602091213159_Register.resx">
+      <DependentUpon>201602091213159_Register.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

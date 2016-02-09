@@ -14,11 +14,14 @@ namespace PhoneList.Repository
         public void Create(DataUser item)
         {
             db.Users.Add(item);
+            Save();
         }
 
         public void Delete(int id)
         {
             db.Users.Remove(GetById(id));
+            Save();
+
         }
 
         public IEnumerable<DataUser> GetAll()
@@ -43,7 +46,10 @@ namespace PhoneList.Repository
 
         public void Update(DataUser user)
         {
+            Save();
+
             throw new NotImplementedException();
+
         }
 
 
@@ -51,11 +57,15 @@ namespace PhoneList.Repository
         public void CreatePerson(DataPerson item)
         {
             db.Persons.Add(item);
+            Save();
+
         }
 
         public void DeletePerson(int id)
         {
             db.Persons.Remove(GetPersonById(id));
+            Save();
+
         }
 
         public IEnumerable<DataPerson> GetAllPersons(int id)
@@ -70,6 +80,8 @@ namespace PhoneList.Repository
 
         public void UpdatePerson(DataPerson person)
         {
+            Save();
+
             throw new NotImplementedException();
         }
 
@@ -86,6 +98,7 @@ namespace PhoneList.Repository
 
         public void Dispose()
         {
+            Save();
             db.Dispose();
         }
     }

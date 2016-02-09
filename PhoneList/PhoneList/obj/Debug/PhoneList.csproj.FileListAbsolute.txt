@@ -116,3 +116,6 @@ C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.Owin.Security.Cookies
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.csprojResolveAssemblyReference.cache
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.dll
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.pdb
+C:\Git\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.Migrations.InitialCreate.resources
+C:\Git\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.csproj.GenerateResource.Cache
+C:\Git\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.Migrations.Register.resources

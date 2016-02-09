@@ -1,4 +1,5 @@
 ﻿using PhoneList.Repository;
+using PhoneList.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,13 @@ using System.Web.Mvc;
 
 namespace PhoneList.Controllers
 {
-    public class MainController : Controller
+    public class MainController : BaseController
     {
         Services.UserService service = new Services.UserService();
         int UserId = 0;
         // GET: Main
         public ActionResult Index()
         {
-            
             return View();
         }
         [HttpPost]
@@ -100,6 +100,13 @@ namespace PhoneList.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpGet]
+        [CustomAuthorize(Roles = "user,admin")]
+        public ActionResult Cabinet()
+        {
+            return View(service.GetUserById(User.Id));
         }
     }
 }
