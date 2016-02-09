@@ -106,6 +106,14 @@ namespace PhoneList.Services
             }
         }
 
+        public void UpdateUser(int id,UserViewModel userVM)
+        {
+            using (EntityRepository db = new EntityRepository())
+            {
+                db.Update(UserVMToDataUser(userVM));
+            }
+        }
+
         //View Model to Data User
         public DataUser UserVMToDataUser(UserViewModel userVM)
         {
@@ -178,8 +186,6 @@ namespace PhoneList.Services
 
             return dataPhone;
         }
-
-
 
         //Data User to View Model
         public UserViewModel DataUserToUserVM(DataUser dataUser)

@@ -1,4 +1,5 @@
-﻿using PhoneList.Repository;
+﻿using PhoneList.Models.ViewModels;
+using PhoneList.Repository;
 using PhoneList.Security;
 using System;
 using System.Collections.Generic;
@@ -102,11 +103,37 @@ namespace PhoneList.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult Upload()
+        {
+            string fileName = "";
+            foreach (string file in Request.Files)
+            {
+                var upload = Request.Files[file];
+                if (upload != null)
+                {
+
+                    // получаем имя файла
+                    fileName = System.IO.Path.GetFileName(upload.FileName);
+                    // сохраняем файл в папку Files в проекте
+                    upload.SaveAs(Server.MapPath("~/Content/Images/" + fileName));
+                }
+            }
+            return Json(fileName);
+        }
+
         [HttpGet]
         [CustomAuthorize(Roles = "user,admin")]
         public ActionResult Cabinet()
         {
             return View(service.GetUserById(User.Id));
+        }
+
+        [HttpPost]
+        public ActionResult Cabinet(UserViewModel model)
+        {
+            service.UpdateUser(User.Id, model);
+            return View(model);
         }
     }
 }
