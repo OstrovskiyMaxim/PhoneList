@@ -22,13 +22,13 @@ namespace PhoneList.Controllers
         public ActionResult Index(int userId)
         {
             this.UserId = userId;
-            return RedirectToAction("AddressBook", userId);
+            return RedirectToAction("AddressBook");
 
         }
 
-        public ActionResult AddressBook(int id)
+        public ActionResult AddressBook()
         {
-            return View(service.GetAllPersons(id));
+            return View(service.GetAllPersons(User.Id));
         }
 
         // GET: Main/Details/5
@@ -59,6 +59,19 @@ namespace PhoneList.Controllers
             }
         }
 
+        public ActionResult CreatePerson()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreatePerson(PersonViewModel person)
+        {
+            person.UserId = User.Id;
+            service.CreatePerson(person);
+            return RedirectToAction("Index");
+        }
         // GET: Main/Edit/5
         public ActionResult Edit(int id)
         {

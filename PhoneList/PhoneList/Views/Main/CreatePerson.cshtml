@@ -1,0 +1,118 @@
+﻿@model PhoneList.Models.ViewModels.PersonViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>PersonViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" >
+            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" name="PhonesVM">
+                <div>
+                    <label class="col-md-3">Phone number</label>
+                    <input type="text" class="col-md-3 form-control" name="PhoneNumber" plaaceholder="Phone" />
+                    <label class="col-md-3">Phone type</label>
+                    <input type="text" class="col-md-3 form-control" name="PhoneType" plaaceholder="type" />
+                </div><br />
+                <div>
+                    <label class="col-md-3">Phone number2</label>
+                    <input type="text" class="col-md-3 form-control" name="PhoneNumber" plaaceholder="Phone" />
+                    <label class="col-md-3">Phone type2</label>
+                    <input type="text" class="col-md-3 form-control" name="PhoneType" plaaceholder="type" />
+                </div>
+            </div>
+            <br />
+        </div>
+
+        <div class="form-group hidden">
+            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("form").submit(function (e) {
+            e.preventDefault();
+            GatherAll();
+
+        })
+    });
+
+
+    function GatherAll() {
+
+        var data = {
+            "FirstName": $("#FirstName").val(),
+            "LastName": $("#LastName").val(),
+            "Age": $("#Age").val(),
+        };
+        var phones = [];
+
+        $.each($(".phone_group"), function () {
+            var current = $(this).find("input");
+            var extend = {
+                "PhoneType": current[0].value,
+                "PhoneNumber": current[1].value,
+            };
+            phones.push(extend);
+
+        })
+        $.extend(data,
+            {
+                "Phones": phones
+            }
+        );
+
+        console.log(data);
+        $.ajax({
+            type: 'POST',
+            data: data,
+            url: "/User/Create/",
+            success: CRUDResult
+        });
+    }
+</script>

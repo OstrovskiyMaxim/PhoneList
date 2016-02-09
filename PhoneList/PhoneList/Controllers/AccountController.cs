@@ -37,7 +37,7 @@ namespace PhoneList.Controllers
                     var cookie = Register(role, user);
                     Response.Cookies.Add(cookie);
 
-                    return RedirectToAction("AddressBook", "Main", user.Id);
+                    return RedirectToAction("Index", "Main");
                     
                 }
                 else
@@ -57,7 +57,7 @@ namespace PhoneList.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("index", "Main");
+            return RedirectToAction("Index", "Main");
         }
 
         private static HttpCookie Register(string[] role,UserViewModel user)
