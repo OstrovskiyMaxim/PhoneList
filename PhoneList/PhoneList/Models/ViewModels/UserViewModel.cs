@@ -18,6 +18,12 @@ namespace PhoneList.Models.ViewModels
         [Display(Name = "Логин")]
         public string Login { get; set; }
 
+        [Display(Name = "Пароль")]
+        public string Password { get; set; }
+
+        [Display(Name = "Роль")]
+        public string Role { get; set; }
+
         [Display(Name = "Email")]
         public string Email { get; set; }
 

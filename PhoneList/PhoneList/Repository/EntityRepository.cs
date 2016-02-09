@@ -31,6 +31,11 @@ namespace PhoneList.Repository
             return db.Users.Find(id);
         }
 
+        public DataUser GetUserByLogin(string login)
+        {
+            return db.Users.Where(x => x.Login == login).FirstOrDefault(); 
+        }
+
         public void Save()
         {
             db.SaveChanges();

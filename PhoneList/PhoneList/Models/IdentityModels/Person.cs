@@ -10,8 +10,6 @@ namespace PhoneList.Models.IdentityModels
 {
     public class Person
     {
-        private PersonViewModel item;
-
         [Key]
         public int Id { get; set; }
 

@@ -27,26 +27,45 @@ namespace PhoneList.Services
             }
         }
 
-        public List<PersonViewModel> GetAllPersons(int userId)
+        public List<UserViewModel> GetAllUsers()
         {
-            List<PersonViewModel> personsVM = new List<PersonViewModel>();
-
             using (EntityRepository db = new EntityRepository())
             {
+                List<UserViewModel> UsersVM = new List<UserViewModel>();
+                foreach (var item in db.GetAll())
+                {
+                    UsersVM.Add(DataUserToUserVM(item));
+                }
+                return UsersVM;
+            }
+        }
+
+        public List<PersonViewModel> GetAllPersons(int userId)
+        {
+            using (EntityRepository db = new EntityRepository())
+            {
+                List<PersonViewModel> personsVM = new List<PersonViewModel>();
                 foreach (var item in db.GetAllPersons(userId))
                 {
                     personsVM.Add(DataPersonToPersonVM(item));
                 }
+                return personsVM;
             }
+        }
 
-            return personsVM;
+        public UserViewModel GetUserByLogin(string login)
+        {
+            using (EntityRepository db = new EntityRepository())
+            {
+                return DataUserToUserVM(db.GetUserByLogin(login));
+            }
         }
 
         public UserViewModel GetUserById(int id)
         {
             using (EntityRepository db = new EntityRepository())
             {
-                return DataUserToDataUserVM(db.GetById(id));
+                return DataUserToUserVM(db.GetById(id));
             }
         }
 
@@ -87,8 +106,6 @@ namespace PhoneList.Services
             }
         }
 
-
-
         //View Model to Data User
         public DataUser UserVMToDataUser(UserViewModel userVM)
         {
@@ -97,6 +114,8 @@ namespace PhoneList.Services
             dataUser.IdentityId = userVM.IdentityId;
             dataUser.Photo = userVM.Photo;
             dataUser.Login = userVM.Login;
+            dataUser.Password = userVM.Password;
+            dataUser.Role = userVM.Role;
             dataUser.Email = userVM.Email;
             dataUser.FirstName = userVM.FirstName;
             dataUser.LastName = userVM.LastName;
@@ -163,13 +182,15 @@ namespace PhoneList.Services
 
 
         //Data User to View Model
-        public UserViewModel DataUserToDataUserVM(DataUser dataUser)
+        public UserViewModel DataUserToUserVM(DataUser dataUser)
         {
             UserViewModel userVM = new UserViewModel();
             userVM.Id = dataUser.Id;
             userVM.IdentityId = dataUser.IdentityId;
             userVM.Photo = dataUser.Photo;
             userVM.Login = dataUser.Login;
+            userVM.Password = dataUser.Password;
+            userVM.Role = dataUser.Role;
             userVM.Email = dataUser.Email;
             userVM.FirstName = dataUser.FirstName;
             userVM.LastName = dataUser.LastName;

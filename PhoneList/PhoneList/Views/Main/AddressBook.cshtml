@@ -1,0 +1,68 @@
+﻿@model IEnumerable<PhoneList.Models.ViewModels.PersonViewModel>
+
+@{
+    ViewBag.Title = "AddressBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddressBook</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @foreach (var i in item.PhonesVM)
+            {
+                @Html.DisplayFor(x => i.PhoneNumber)<br />
+                @Html.DisplayFor(x => i.PhoneType)
+            }
+        </td>
+        <td>
+            @foreach (var i in item.AdressesVM)
+            {
+                @Html.DisplayFor(x => i.Country)<br />
+                @Html.DisplayFor(x => i.City)<br />
+                @Html.DisplayFor(x => i.Street)<br />
+                @Html.DisplayFor(x => i.HouseNo)
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
