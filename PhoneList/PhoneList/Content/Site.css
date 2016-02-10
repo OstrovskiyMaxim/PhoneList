@@ -40,3 +40,14 @@ textarea {
     background-size: cover;
     background-image: url(../../Content/Images/addressbook_g.png);
 }
+
+.fa.fa-spinner.krutilka{
+
+    margin-left: 10px;
+
+    /*font-size: 50px;*/
+}
+
+.krutilka.visible{
+    display: inline-block;
+}

@@ -56,10 +56,11 @@
                 <div>
                     <label>Country</label>
                     <select class="form-control" id="countries"><option></option></select>
-                    <label>City</label>
-                    <select class="form-control" itemscope="10" id="cities">
+                    <label>City</label><i class="fa fa-spinner fa-spin krutilka hidden" id="spinner"></i>
+                    <select class="form-control" id="cities">
                        
                     </select>
+                    
                     <label>Street</label>
                     <input class="form-control" type="text" name="street" />
                     <label>House/apartment</label>
@@ -177,14 +178,20 @@
                 function InsertCitiesToSelect(result) {
                     var citySelect = $('#cities');
                     
-                    citySelect.children().remove();
+                    $('#spinner').removeClass('hidden');
+                    setTimeout(function () {
+                        $('#spinner').addClass('hidden');
 
-                    result.forEach(function (item) {
-                        if (item.Name != "") {
-                            citySelect.append('<option value="' + item.CityId + '">' + item.Name + '</option>');
-                        }
-                    });
+                        citySelect.children().remove();
+
+                        result.forEach(function (item) {
+                            if (item.Name != "") {
+                                citySelect.append('<option value="' + item.CityId + '">' + item.Name + '</option>');
+                            }
+                        });
+                    }, 1000);
                 }
+
         });
     </script>
 }
