@@ -14,5 +14,16 @@ namespace PhoneList.Models.DataModel
         public string Name { get; set; }
 
         public List<DataCity> Cities { get; set; }
+
+        public DataCountry()
+        {
+
+        }
+
+        public DataCountry(string name)
+        {
+            this.Name = name;
+            this.Cities = new List<DataCity>();
+        }
     }
 }

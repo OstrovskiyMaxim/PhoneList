@@ -166,6 +166,8 @@
     <Compile Include="Models\IdentityModels\Phone.cs" />
     <Compile Include="Models\IdentityModels\User.cs" />
     <Compile Include="Models\ViewModels\AdressViewModel.cs" />
+    <Compile Include="Models\ViewModels\CityViewModel.cs" />
+    <Compile Include="Models\ViewModels\CountriesViewModel.cs" />
     <Compile Include="Models\ViewModels\PersonViewModel.cs" />
     <Compile Include="Models\ViewModels\PhoneViewModel.cs" />
     <Compile Include="Models\ViewModels\UserViewModel.cs" />

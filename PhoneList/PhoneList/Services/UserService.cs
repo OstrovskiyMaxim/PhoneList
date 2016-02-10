@@ -1,9 +1,11 @@
-﻿using PhoneList.Models.DataModel;
+﻿using Newtonsoft.Json.Linq;
+using PhoneList.Models.DataModel;
 using PhoneList.Models.IdentityModels;
 using PhoneList.Models.ViewModels;
 using PhoneList.Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -77,17 +79,32 @@ namespace PhoneList.Services
             }
         }
 
-        public List<DataCountry> GetAllCountries()
+        public List<CountriesViewModel> GetAllCountries()
         {
-            return new EntityRepository().GetAllCountries().ToList();
+            List<DataCountry> counties = new EntityRepository().GetAllCountries().ToList();
+            List<CountriesViewModel> countriesVM = new List<CountriesViewModel>();
+            foreach (var item in counties)
+            {
+                countriesVM.Add(new CountriesViewModel(item.Name, item.Id));
+            }
+            return countriesVM;
         }
 
-        public List<DataCity> GetCitiesByCountryId(int id)
+        public List<CityViewModel> GetCitiesByCountryId(int id)
         {
+            List<DataCity> Cities = new List<DataCity>();
+            List<CityViewModel> CitiesVM = new List<CityViewModel>();
             using (EntityRepository db = new EntityRepository())
             {
-                return db.GetCityByCountryId(id).ToList();
+                Cities = db.GetCityByCountryId(id).ToList();
             }
+
+            foreach (var item in Cities)
+            {
+                CitiesVM.Add(new CityViewModel(item.Name, item.Id));
+            }
+
+            return CitiesVM;
         }
 
         public void DeleteUser(int id)

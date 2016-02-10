@@ -2,10 +2,12 @@
 using PhoneList.Repository;
 using PhoneList.Security;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PhoneList.Models.DataModel;
 
 namespace PhoneList.Controllers
 {
@@ -116,6 +118,8 @@ namespace PhoneList.Controllers
             }
         }
 
+       
+
         [HttpPost]
         public JsonResult Upload()
         {
@@ -147,6 +151,22 @@ namespace PhoneList.Controllers
         {
             service.UpdateUser(User.Id, model);
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult GetCountries()
+        {
+            List<CountriesViewModel> Countries = new List<CountriesViewModel>();
+            Countries = service.GetAllCountries();
+            return Json(Countries);
+        }
+
+        [HttpPost]
+        public ActionResult GetCities(int id)
+        {
+            List<CityViewModel> Cities = new List<CityViewModel>();
+            Cities = service.GetCitiesByCountryId(id);
+            return Json(Cities);
         }
     }
 }

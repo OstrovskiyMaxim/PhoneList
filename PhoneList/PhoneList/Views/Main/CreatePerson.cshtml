@@ -32,9 +32,8 @@
             </div>
         </div>
 
-        <div class="form-group" >
-            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10" name="PhonesVM">
+        <div class="form-group">
+            <div class="col-md-10 phone_group" name="PhonesVM">
                 <div>
                     <label class="col-md-3">Phone number</label>
                     <input type="text" class="col-md-3 form-control" name="PhoneNumber" plaaceholder="Phone" />
@@ -49,6 +48,24 @@
                 </div>
             </div>
             <br />
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10 address_group">
+                <label>Addresses</label>
+                <div>
+                    <label>Country</label>
+                    <select class="form-control" id="countries"><option></option></select>
+                    <label>City</label>
+                    <select class="form-control" itemscope="10" id="cities">
+                       
+                    </select>
+                    <label>Street</label>
+                    <input class="form-control" type="text" name="street" />
+                    <label>House/apartment</label>
+                    <input class="form-control" type="text" name="houseN_apartment" />
+                </div>
+            </div>
         </div>
 
         <div class="form-group hidden">
@@ -72,47 +89,102 @@
 </div>
 
 
-<script type="text/javascript">
+@section scripts{
+    <script type="text/javascript">
 
-    $(document).ready(function () {
-        $("form").submit(function (e) {
-            e.preventDefault();
-            GatherAll();
+        //$(document).ready(function () {
+        //    $("form").submit(function (e) {
+        //        e.preventDefault();
+        //        GatherAll();
 
-        })
-    });
+        //    })
+        //});
 
 
-    function GatherAll() {
+        function GatherAll() {
 
-        var data = {
-            "FirstName": $("#FirstName").val(),
-            "LastName": $("#LastName").val(),
-            "Age": $("#Age").val(),
-        };
-        var phones = [];
-
-        $.each($(".phone_group"), function () {
-            var current = $(this).find("input");
-            var extend = {
-                "PhoneType": current[0].value,
-                "PhoneNumber": current[1].value,
+            var data = {
+                "FirstName": $("#FirstName").val(),
+                "LastName": $("#LastName").val(),
+                "Age": $("#Age").val(),
             };
-            phones.push(extend);
+            var phones = [];
+            var addresses = [];
 
-        })
-        $.extend(data,
-            {
-                "Phones": phones
+            $.each($(".phone_group"), function () {
+                var current = $(this).find("input");
+                var extend = {
+                    "PhoneType": current[0].value,
+                    "PhoneNumber": current[1].value,
+                };
+                phones.push(extend);
+
+            })
+            $.extend(data,
+                {
+                    "Phones": phones
+                }
+            );
+
+            console.log(data);
+            $.ajax({
+                type: 'POST',
+                data: data,
+                url: "/User/Create/",
+                success: CRUDResult
+            });
+        }
+
+
+        $(document).ready(function () {
+            $.ajax({
+                type: 'POST',
+                url: "/Main/GetCountries/",
+                success: function (result) {
+                    InsertCountriesToSelect(result);
+                }
+            });
+
+            function InsertCountriesToSelect(result) {
+                var countrySelect = $('#countries');
+                
+                console.log(result.Length);
+
+                result.forEach(function (item) {
+                    if(item.Name != ""){
+                        countrySelect.append('<option value="' + item.CountryId + '">' + item.Name + '</option>');
+                    }
+                });
             }
-        );
 
-        console.log(data);
-        $.ajax({
-            type: 'POST',
-            data: data,
-            url: "/User/Create/",
-            success: CRUDResult
+                var countrySelect = $('#countries');
+                countrySelect.on("change", function () {
+
+                    var selected = countrySelect.find('option:selected').val();
+
+                    
+
+                    $.ajax({
+                        type: 'POST',
+                        //data: selected,
+                        url: "/Main/GetCities/"+selected,
+                        success: function (result) {
+                            InsertCitiesToSelect(result);
+                        }
+                    });
+                });
+       
+                function InsertCitiesToSelect(result) {
+                    var citySelect = $('#cities');
+                    
+                    citySelect.children().remove();
+
+                    result.forEach(function (item) {
+                        if (item.Name != "") {
+                            citySelect.append('<option value="' + item.CityId + '">' + item.Name + '</option>');
+                        }
+                    });
+                }
         });
-    }
-</script>
+    </script>
+}

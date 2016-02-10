@@ -18,5 +18,15 @@ namespace PhoneList.Models.DataModel
         public int CountryId { get; set; }
 
         public DataCountry country { get; set; }
+
+        public DataCity()
+        {
+
+        }
+
+        public DataCity(string name)
+        {
+            this.Name = name;
+        }
     }
 }
