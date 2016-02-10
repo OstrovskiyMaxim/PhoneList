@@ -23,11 +23,20 @@ textarea {
     max-width: 280px;
 }
 
-.image-profile{
+.image-profile {
     height: 150px;
     width: 150px;
     border-radius: 50%;
     background-position: center;
     background-size: cover;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
+}
+
+.img-title {
+    margin-top:25px;
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../../Content/Images/addressbook_g.png);
 }

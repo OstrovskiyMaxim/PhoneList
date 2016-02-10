@@ -220,15 +220,15 @@ namespace PhoneList.Services
             personVM.LastName = dataPerson.LastName;
             personVM.UserId = dataPerson.UserId;
 
-            foreach (var item in dataPerson.Phones)
-            {
-                personVM.PhonesVM.Add(DataPhoneToPhoneVM(item));
-            }
+            //foreach (var item in dataPerson.Phones)
+            //{
+            //    personVM.PhonesVM.Add(DataPhoneToPhoneVM(item));
+            //}
 
-            foreach (var item in dataPerson.Adress)
-            {
-                personVM.AdressesVM.Add(DataAdressToAdressVM(item));
-            }
+            //foreach (var item in dataPerson.Adress)
+            //{
+            //    personVM.AdressesVM.Add(DataAdressToAdressVM(item));
+            //}
 
             return personVM;
         }
