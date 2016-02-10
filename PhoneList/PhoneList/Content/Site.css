@@ -51,3 +51,8 @@ textarea {
 .krutilka.visible{
     display: inline-block;
 }
+
+#map{
+    height: 300px;
+    width: 300px;
+}

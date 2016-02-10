@@ -181,3 +181,6 @@ D:\GIT\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.Migrations.Regi
 D:\GIT\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.csproj.GenerateResource.Cache
 D:\GIT\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.dll
 D:\GIT\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.pdb
+C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.Migrations.InitialCreate.resources
+C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.Migrations.Register.resources
+C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.csproj.GenerateResource.Cache
