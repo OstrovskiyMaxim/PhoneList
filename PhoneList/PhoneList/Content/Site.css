@@ -52,7 +52,8 @@ textarea {
     display: inline-block;
 }
 
-#map{
+#mapCreatePerson{
     height: 300px;
-    width: 300px;
+    width: 100%;
+    border-radius:15px;
 }

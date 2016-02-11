@@ -56,6 +56,10 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @RenderSection("scripts", required: false)
+        <script src="~/Scripts/MapScript.js"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCj9wjc6qirHgL3ktrDuah1dO1-5WXEI_M&callback=initMap">
+    </script>
 </body>
 </html>
