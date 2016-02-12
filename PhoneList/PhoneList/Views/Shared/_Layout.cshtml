@@ -33,10 +33,10 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="searchDropDown">
-                                    <li><a href="#" name="byAll" onclick="Search(this)">All</a></li>
-                                    <li><a href="#" name="byName" onclick="Search(this)">Name</a></li>
-                                    <li><a href="#" name="byAddress" onclick="Search(this)">Address</a></li>
-                                    <li><a href="#" name="byPhone" onclick="Search(this)">Phone</a></li>
+                                    <li><a href="#" name="byAll" onclick="Search('byAll')">All</a></li>
+                                    <li><a href="#" name="byName" onclick="Search('byName')">Name</a></li>
+                                    <li><a href="#" name="byAddress" onclick="Search('byAddress')">Address</a></li>
+                                    <li><a href="#" name="byPhone" onclick="Search('byPhone')">Phone</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -44,18 +44,19 @@
                 </ul>
 
                 <script type="text/javascript">
-                    function Search(e) {
-                        var searchBy = e.target.name;
-                        var query = $('#searchField').text();
+                    function Search(searchBy) {
+                        //var searchBy = e.sender.name;
+                        var query = $('#searchField').val();
 
-                        $.ajax({
-                            type: 'POST',
-                            data: {
-                                "searchBy": searchBy,
-                                "query": query
-                                },
-                            url: "/Main/Search/"
-                        });
+                        document.location.href = "/Main/Search?" + "query=" + query + "&searchBy=" + searchBy;
+                        //$.ajax({
+                        //    type: 'POST',
+                        //    data: {
+                        //        "searchBy": searchBy,
+                        //        "query": query
+                        //        },
+                        //    url: "/Main/Search/"
+                        //});
                     }
                 </script>
 

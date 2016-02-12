@@ -34,10 +34,11 @@ namespace PhoneList.Controllers
         {
             return View(service.GetAllPersons(User.Id));
         }
-        public ActionResult AddressBook(List<PersonViewModel> persons)
-        {
-            return View(persons);
-        }
+
+        //public ActionResult AddressBook(List<PersonViewModel> persons)
+        //{
+        //    return View(persons);
+        //}
 
         // GET: Main/Details/5
         public ActionResult Details(int id)
@@ -174,7 +175,7 @@ namespace PhoneList.Controllers
             return Json(Cities);
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Search(string query, string searchBy)
         {
             List<PersonViewModel> persons = new List<PersonViewModel>();
@@ -182,7 +183,7 @@ namespace PhoneList.Controllers
 
             persons = search.Search(User.Id, query, searchBy);
 
-            return RedirectToAction("AddressBook", persons);
+            return View(persons);
         }
     }
 }

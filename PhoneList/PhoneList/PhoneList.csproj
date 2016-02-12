@@ -225,6 +225,7 @@
     <Content Include="Views\Main\Cabinet.cshtml" />
     <Content Include="Views\Main\CreatePerson.cshtml" />
     <Content Include="Views\Main\Delete.cshtml" />
+    <Content Include="Views\Main\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
