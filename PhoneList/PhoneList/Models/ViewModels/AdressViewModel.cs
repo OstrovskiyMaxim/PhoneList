@@ -41,11 +41,12 @@ namespace PhoneList.Models.ViewModels
             this.City = city;
             this.Street = street;
             this.HouseNo = houseNo;
+            this.Persons = new List<PersonViewModel>();
         }
 
         public AdressViewModel()
         {
-
+            this.Persons = new List<PersonViewModel>();
         }
 
         //public AdressViewModel(Adress adress)

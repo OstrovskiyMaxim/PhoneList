@@ -11,7 +11,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @id = "firstName" } })
                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -19,7 +19,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", @id = "lastName" } })
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control", @id = "age" } })
                 @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,6 +66,8 @@
                     <input class="form-control" type="text" name="street" id="street" onblur="CreatePersonFieldChange()"/>
                     <label>House/apartment</label>
                     <input class="form-control" type="text" name="houseN_apartment" onblur="CreatePersonFieldChange()" id="houseNo"/>
+                    <input type="hidden" id="lng"/>
+                    <input type="hidden" id="lat"/>
                 </div>
             </div>
         </div>
@@ -80,7 +82,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="button" value="Create" onclick="GatherAll()" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -96,10 +98,11 @@
 @section scripts{
     <script type="text/javascript">
         function GatherAll() {
+
             var data = {
-                "FirstName": $("#FirstName").val(),
-                "LastName": $("#LastName").val(),
-                "Age": $("#Age").val(),
+                "FirstName": $("#firstName").val(),
+                "LastName": $("#lastName").val(),
+                "Age": $("#age").val(),
             };
             var phones = [];
             var addresses = [];
@@ -112,9 +115,22 @@
                 };
                 phones.push(extend);
             })
+
+            addresses[0] = {
+                "CountryId": $('#countries').find('option:selected').val(),
+                "Country": $('#countries').find('option:selected').text(),
+                "CityId": $('#cities').find('option:selected').val(),
+                "City": $('#cities').find('option:selected').text(),
+                "Street": $('#street').val(),
+                "HouseNo": $('#houseNo').val(),
+                "Lng": $('#lng').text(),
+                "Lat": $('#lat').text()
+            };
+
             $.extend(data,
                 {
-                    "Phones": phones
+                    "PhonesVM": phones,
+                    "AdressesVM": addresses
                 }
             );
 
@@ -122,8 +138,8 @@
             $.ajax({
                 type: 'POST',
                 data: data,
-                url: "/User/Create/",
-                success: CRUDResult
+                url: "/Main/CreatePerson/",
+                success: function () { document.location.href = "/Main/Addressbook/";}
             });
         }
 

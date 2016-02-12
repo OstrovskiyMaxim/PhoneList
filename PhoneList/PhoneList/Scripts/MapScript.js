@@ -2,6 +2,8 @@
 function initMap(mapId, address) {
    
     var mapPosition;
+    var lng;
+    var lat;
     var geocoder = geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'address': address }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
@@ -9,8 +11,14 @@ function initMap(mapId, address) {
             mapPosition =  results[0].geometry.location;
             var marker = new google.maps.Marker({
                 map: map,
-                position:mapPosition,
+                position:mapPosition
             });
+
+            lng = mapPosition.lng();
+            lat = mapPosition.lat();
+
+            $('#lat').text(lat);
+            $('#lng').text(lng);
 
             var infowindow = new google.maps.InfoWindow({
                 content: results[0].formatted_address
@@ -22,6 +30,10 @@ function initMap(mapId, address) {
         center: mapPosition,
         zoom: 12
     });
+
+ 
+
+   
 }
 
 function CreatePersonFieldChange(e) {

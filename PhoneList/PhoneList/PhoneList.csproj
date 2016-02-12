@@ -176,6 +176,7 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Security\CustomAuthorizeAttribute.cs" />
     <Compile Include="Security\CustomPrincipal.cs" />
+    <Compile Include="Services\SearchService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +224,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Main\Cabinet.cshtml" />
     <Content Include="Views\Main\CreatePerson.cshtml" />
+    <Content Include="Views\Main\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />

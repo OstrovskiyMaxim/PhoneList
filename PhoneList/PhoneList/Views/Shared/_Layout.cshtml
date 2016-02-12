@@ -25,8 +25,40 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="navbar-right">@Html.ActionLink("Address book", "Addressbook", "Main")</li>
+                        <li class="navbar-right">
+                            <input type="text" class="input-sm" id="searchField"/>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="searchDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Search by
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="searchDropDown">
+                                    <li><a href="#" name="byAll" onclick="Search(this)">All</a></li>
+                                    <li><a href="#" name="byName" onclick="Search(this)">Name</a></li>
+                                    <li><a href="#" name="byAddress" onclick="Search(this)">Address</a></li>
+                                    <li><a href="#" name="byPhone" onclick="Search(this)">Phone</a></li>
+                                </ul>
+                            </div>
+                        </li>
                     }
                 </ul>
+
+                <script type="text/javascript">
+                    function Search(e) {
+                        var searchBy = e.target.name;
+                        var query = $('#searchField').text();
+
+                        $.ajax({
+                            type: 'POST',
+                            data: {
+                                "searchBy": searchBy,
+                                "query": query
+                                },
+                            url: "/Main/Search/"
+                        });
+                    }
+                </script>
+
                 @if (User.Identity.IsAuthenticated)
                 {
                     <ul class="nav navbar-nav navbar-right">

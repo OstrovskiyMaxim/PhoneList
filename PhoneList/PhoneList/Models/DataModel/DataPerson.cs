@@ -34,6 +34,7 @@ namespace PhoneList.Models.DataModel
         public DataPerson()
         {
             Phones = new List<DataPhone>();
+            Adress = new List<DataAdress>();
         }
 
         //public DataPerson(Person person)

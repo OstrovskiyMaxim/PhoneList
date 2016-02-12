@@ -163,6 +163,10 @@ namespace PhoneList.Services
             dataPerson.FirstName = personVM.FirstName;
             dataPerson.LastName = personVM.LastName;
             dataPerson.UserId = personVM.UserId;
+            //using (EntityRepository db = new EntityRepository())
+            //{
+            //    dataPerson.user = db.GetById(personVM.UserId);
+            //}
 
             foreach (var item in personVM.PhonesVM)
             {
@@ -171,22 +175,26 @@ namespace PhoneList.Services
 
             foreach (var item in personVM.AdressesVM)
             {
+                
                 dataPerson.Adress.Add(AdressVMToDataAdress(item));
             }
 
             return dataPerson;
         }
 
+
+
+
         private DataAdress AdressVMToDataAdress(AdressViewModel adressVM)
         {
             DataAdress dataAdress = new DataAdress();
 
-            dataAdress.Id = adressVM.Id;
             dataAdress.CityId = adressVM.CityId;
             dataAdress.HouseNo = adressVM.HouseNo;
             dataAdress.Lat = adressVM.Lat;
             dataAdress.Lng = adressVM.Lng;
-            dataAdress.PersonId = adressVM.person.Id;
+            dataAdress.City = new EntityRepository().GetCityById(adressVM.CityId);
+            //dataAdress.person = PersonVMToDataPerson( adressVM.person);
             dataAdress.Street = adressVM.Street;
 
             return dataAdress;

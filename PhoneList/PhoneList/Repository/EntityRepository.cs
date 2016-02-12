@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PhoneList.Repository
 {
-    public class EntityRepository : IRepository<DataUser>,IDisposable
+    public class EntityRepository : IRepository<DataUser>, IDisposable
     {
         EntityContext db = new EntityContext();
 
@@ -17,10 +17,68 @@ namespace PhoneList.Repository
             Save();
         }
 
+        public DataCity GetCityById(int id)
+        {
+            return db.Cities.Where(c => c.Id == id).FirstOrDefault();
+        }
+
         public void Delete(int id)
         {
             db.Users.Remove(GetById(id));
             Save();
+        }
+
+        public IEnumerable<DataPerson> GetPersonsBy_FirstName(int userId, string query)
+        {
+            return GetAllPersons(userId)
+                .Where(p => p.FirstName.Contains(query));
+        }
+
+        public IEnumerable<DataPerson> GetPersonsBy_LastName(int userId, string query)
+        {
+            return GetAllPersons(userId)
+                .Where(p => p.LastName.Contains(query));
+        }
+
+        public IEnumerable<DataPerson> GetPersonsBy_Age(int userId, int query)
+        {
+            return GetAllPersons(userId)
+                .Where(p => p.LastName == query.ToString());
+        }
+
+        public IEnumerable<DataPerson> GetPersonsBy_City(int userId, string query)
+        {
+            return GetAllPersons(userId)
+                .Where(p => p.Adress.Contains(db.Adresses.Where(x => x.City.Name == query)
+                .FirstOrDefault()));
+        }
+
+        public IEnumerable<DataPerson> GetPersonsBy_Country(int userId, string query)
+        {
+            return GetAllPersons(userId)
+                .Where(p => p.Adress.Contains(db.Adresses.Where(x => x.City.country.Name == query)
+                .FirstOrDefault()));
+        }
+
+        public IEnumerable<DataPerson> GetPersonsBy_Street(int userId, string query)
+        {
+            return GetAllPersons(userId)
+                .Where(p => p.Adress.Contains(db.Adresses.Where(x => x.Street == query)
+                .FirstOrDefault()));
+        }
+
+        public IEnumerable<DataPerson> GetPersonsBy_PhoneNumber(int userId, string query)
+        {
+            return GetAllPersons(userId)
+                .Where(p => p.Phones.Contains(db.Phones.Where(x => x.PhoneNumber == query)
+                .FirstOrDefault()));
+        }
+
+        public IEnumerable<DataPerson> GetPersonsBy_PhoneType(int userId, string query)
+        {
+            return GetAllPersons(userId)
+                .Where(p => p.Phones.Contains(db.Phones.Where(x => x.PhoneType == query)
+                .FirstOrDefault()));
         }
 
         public IEnumerable<DataUser> GetAll()
@@ -35,7 +93,7 @@ namespace PhoneList.Repository
 
         public DataUser GetUserByLogin(string login)
         {
-            return db.Users.Where(x => x.Login == login).FirstOrDefault(); 
+            return db.Users.Where(x => x.Login == login).FirstOrDefault();
         }
 
         public void Save()
@@ -72,9 +130,9 @@ namespace PhoneList.Repository
                 UpdatePerson(item);
             }
 
-                Save();
+            Save();
         }
-        
+
         //Person CRUD actions
         public void CreatePerson(DataPerson item)
         {
@@ -90,7 +148,7 @@ namespace PhoneList.Repository
 
         public IEnumerable<DataPerson> GetAllPersons(int id)
         {
-            return db.Persons.Where(x=>x.UserId == id).ToList();
+            return db.Persons.Where(x => x.UserId == id).ToList();
         }
 
         public DataPerson GetPersonById(int id)
@@ -122,7 +180,7 @@ namespace PhoneList.Repository
                 UpdatePhone(item);
             }
 
-                Save();
+            Save();
         }
 
         public void UpdatePhone(DataPhone phone)

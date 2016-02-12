@@ -90,10 +90,6 @@ C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\System.Web.WebPages.Deployment.
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\System.Web.WebPages.dll
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\System.Web.WebPages.Razor.dll
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\WebGrease.dll
-C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.Owin.dll
-C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.Owin.Security.OAuth.dll
-C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.Owin.Security.dll
-C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.Owin.Security.Cookies.dll
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\System.Web.Helpers.xml
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\System.Web.Mvc.xml
@@ -109,11 +105,6 @@ C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\EntityFramework.SqlServer.xml
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.Owin.xml
-C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.Owin.Security.xml
-C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\Microsoft.Owin.Security.Cookies.xml
-C:\Git\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.csprojResolveAssemblyReference.cache
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.dll
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.pdb
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.Migrations.InitialCreate.resources

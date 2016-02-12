@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PhoneList.Models.DataModel;
+using PhoneList.Services;
 
 namespace PhoneList.Controllers
 {
@@ -20,6 +21,7 @@ namespace PhoneList.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Index(int userId)
         {
@@ -31,6 +33,10 @@ namespace PhoneList.Controllers
         public ActionResult AddressBook()
         {
             return View(service.GetAllPersons(User.Id));
+        }
+        public ActionResult AddressBook(List<PersonViewModel> persons)
+        {
+            return View(persons);
         }
 
         // GET: Main/Details/5
@@ -63,13 +69,14 @@ namespace PhoneList.Controllers
 
         public ActionResult CreatePerson()
         {
-            
+
             return View();
         }
 
         [HttpPost]
         public ActionResult CreatePerson(PersonViewModel person)
         {
+            person.AdressesVM[0].person = person;
             person.UserId = User.Id;
             service.CreatePerson(person);
             return RedirectToAction("Index");
@@ -99,7 +106,7 @@ namespace PhoneList.Controllers
         // GET: Main/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(service.GetPersonById(id));
         }
 
         // POST: Main/Delete/5
@@ -108,7 +115,7 @@ namespace PhoneList.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                service.DeletePerson(id);
 
                 return RedirectToAction("Index");
             }
@@ -117,8 +124,6 @@ namespace PhoneList.Controllers
                 return View();
             }
         }
-
-       
 
         [HttpPost]
         public JsonResult Upload()
@@ -167,6 +172,17 @@ namespace PhoneList.Controllers
             List<CityViewModel> Cities = new List<CityViewModel>();
             Cities = service.GetCitiesByCountryId(id);
             return Json(Cities);
+        }
+
+        [HttpPost]
+        public ActionResult Search(string query, string searchBy)
+        {
+            List<PersonViewModel> persons = new List<PersonViewModel>();
+            SearchService search = new SearchService();
+
+            persons = search.Search(User.Id, query, searchBy);
+
+            return RedirectToAction("AddressBook", persons);
         }
     }
 }
