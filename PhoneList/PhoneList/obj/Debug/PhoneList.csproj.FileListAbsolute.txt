@@ -46,7 +46,6 @@ C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\bin\EntityFramewor
 C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.csprojResolveAssemblyReference.cache
 C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.dll
 C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.pdb
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList\bin\roslyn\csc.exe
@@ -167,3 +166,4 @@ D:\GIT\Valtech\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.pdb
 C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.Migrations.InitialCreate.resources
 C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.Migrations.Register.resources
 C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.csproj.GenerateResource.Cache
+C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList\obj\Debug\PhoneList.csprojResolveAssemblyReference.cache

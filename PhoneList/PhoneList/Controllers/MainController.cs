@@ -30,7 +30,7 @@ namespace PhoneList.Controllers
 
         }
 
-        public ActionResult AddressBook()
+        public ActionResult AddressBook() 
         {
             return View(service.GetAllPersons(User.Id));
         }

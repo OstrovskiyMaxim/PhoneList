@@ -78,3 +78,7 @@ C:\Git\Valtech\PhoneList\PhoneList\PhoneList.Tests\bin\Debug\EntityFramework.xml
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList.Tests\obj\Debug\PhoneList.Tests.csprojResolveAssemblyReference.cache
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList.Tests\obj\Debug\PhoneList.Tests.dll
 C:\Git\Valtech\PhoneList\PhoneList\PhoneList.Tests\obj\Debug\PhoneList.Tests.pdb
+C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList.Tests\bin\Debug\Moq.dll
+C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList.Tests\bin\Debug\nunit.framework.dll
+C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList.Tests\bin\Debug\Moq.xml
+C:\Users\Maxim\Documents\GitHub\PhoneList\PhoneList\PhoneList.Tests\bin\Debug\nunit.framework.xml

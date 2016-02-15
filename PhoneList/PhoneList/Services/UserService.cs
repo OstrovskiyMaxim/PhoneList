@@ -13,12 +13,23 @@ namespace PhoneList.Services
 {
     public class UserService
     {
+        // public IRepository<UserViewModel> repository;
+
+        private EntityRepository db;
+
+        public UserService(EntityRepository repo)
+        {
+            db = repo;
+        }
+
+        public UserService()
+        {
+            db = new EntityRepository();
+        }
+
         public void Create(UserViewModel user)
         {
-            using (EntityRepository db = new EntityRepository())
-            {
                 db.Create(UserVMToDataUser(user));
-            }
         }
 
         public void CreatePerson(PersonViewModel person)
